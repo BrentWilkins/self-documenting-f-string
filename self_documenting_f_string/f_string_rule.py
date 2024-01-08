@@ -11,6 +11,7 @@ from flake8.style_guide import Violation
 
 class CustomChecker:
     """Allow valid self-documenting f-string code to be checked and not emmit false pycodestyle errors."""
+
     name = 'custom-checker'
     version = '0.1'
     ignore_codes = {'E251', 'E202'}
@@ -30,13 +31,7 @@ class CustomChecker:
         """Do the checking."""
         for error in self._get_ws_errors():
             if error.code not in self.ignore_codes or not self._in_fstring(error):
-                yield Violation(
-                    lineno=error.line_number,
-                    col_offset=error.column_number,
-                    message=error.text,
-                    physical_line=error.physical_line,
-                    plugin=self,
-                )
+                yield error
 
     def _in_fstring(self, error: Violation) -> bool:
         """Determine if the error is in an f-string or not."""

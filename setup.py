@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='self-documenting-f-string',
-    version='0.1',
+    version='0.1.1',
     description='flake8 plugin to run pycodecheck but ignore their incorrect self-documenting f-string errors in Python 3.12',
     author='Brent Wilkins',
     author_email='brent@wilkins.in',
